@@ -1,3 +1,4 @@
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f9f9f9;
@@ -26,4 +27,8 @@ body {
     font-weight: bold;
     margin-top: 20px;
     color: #337ab7;
+}
+
+.switch {
+    margin-bottom: 20px;
 }

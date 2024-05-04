@@ -1,5 +1,27 @@
+// script.js
+
 const calculateButton = document.getElementById('calculate');
 const resultElement = document.getElementById('result');
+const modeSwitch = document.getElementById('mode-switch');
+
+let mode = 1; // 1 - first mode, 2 - second mode
+
+modeSwitch.addEventListener('change', () => {
+  mode = mode === 1? 2 : 1;
+  const sessionLabel = document.querySelector('label[for="session"]');
+  const helperTexts = document.querySelectorAll('span.helper-text[data-error="wrong"][data-success="right"]');
+  const calculateButton = document.getElementById('calculate');
+
+  if (mode === 2) {
+      sessionLabel.textContent = 'Желаемый итоговый балл:';
+      helperTexts[2].textContent = 'Введите желаемый итоговый балл';
+      calculateButton.textContent = 'Расчитать необходимый балл сессии';
+  } else {
+      sessionLabel.textContent = 'Сессия:';
+      helperTexts[2].textContent = 'Введите баллы за сессию';
+      calculateButton.textContent = 'Расчитать итоговый балл';
+  }
+});
 
 calculateButton.addEventListener('click', (e) => {
     e.preventDefault();
@@ -12,7 +34,15 @@ calculateButton.addEventListener('click', (e) => {
         return;
     }
 
-    const totalScore = (control1 + control2) * 0.3 + session * 0.4;
+    
+
+    let totalScore;
+    if (mode === 1) {
+        totalScore = (control1 + control2) * 0.3 + session * 0.4;
+    } else {
+        totalScore = (session - (control1 + control2) * 0.3) / 0.4;
+    }
+
     const grade = getGrade(totalScore);
 
     let resultText = `Итоговый балл: ${totalScore.toFixed(2)} (${grade})`;
