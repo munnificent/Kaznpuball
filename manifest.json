@@ -1,12 +1,12 @@
 {
-  "background_color": "#da532c",
+  "background_color": "#ffffff",
   "description": "Расчет итогового балла и необходимого балла на сессии для студентов КазНПУ имени Абая",
   "dir": "ltr",
   "display": "standalone",
   "name": "munnificent.github",
   "orientation": "any",
   "scope": "/",
-  "short_name": "munnificent.github",
+  "short_name": "Расчет Баллов",
   "start_url": "https://munnificent.github.io/Kaznpuball/",
   "theme_color": "#ffffff",
   "icons": [
