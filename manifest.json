@@ -9,6 +9,12 @@
   "short_name": "Расчет Баллов",
   "start_url": "https://kaznpu.munificent.net/",
   "theme_color": "#ffffff",
+  "id": "L5NDMC2",
+  "lang": "ru",
+  "categories": [
+    "education",
+    "utilities"
+  ],
   "icons": [
     {
       "src": "favicon-32x32.png",
