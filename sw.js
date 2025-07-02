@@ -1,14 +1,27 @@
 'use strict';
 
+// Импортируем вспомогательную библиотеку
 importScripts('sw-toolbox.js');
 
+// 1. Предварительное кэширование "оболочки" приложения (App Shell).
+// Эти файлы будут доступны офлайн сразу после установки Service Worker.
+// sw-toolbox автоматически будет отдавать их из кэша.
 toolbox.precache([
-  "index.html",
-  "script.js",
-  "style.css"
+  '/',
+  'index.html',
+  'script.js',
+  'style.css',
+  'manifest.json'
 ]);
 
-toolbox.router.get('/*', toolbox.cacheFirst);
-toolbox.router.get('/*', toolbox.networkFirst, {
-  networkTimeoutSeconds: 5
-});
+// 2. Устанавливаем стратегию кэширования для всех остальных запросов.
+// Используем 'networkFirst': пытаемся получить свежую версию из сети.
+// Если сеть недоступна, возвращаем данные из кэша.
+toolbox.router.get(
+  '/*', 
+  toolbox.networkFirst,
+  {
+    // Таймаут, чтобы не ждать ответа от медленной сети слишком долго.
+    networkTimeoutSeconds: 5
+  }
+);

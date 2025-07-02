@@ -1,51 +1,98 @@
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f9f9f9;
+/* :root содержит переменные, которые используются во всем файле. 
+   Это позволяет легко менять цветовую схему сайта. */
+   :root {
+    --primary-color: #2d74c4;
+    --background-color: #f4f7f9;
+    --container-background: #ffffff;
+    --text-color: #333333;
+    --muted-text-color: #666666;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --font-family: 'Roboto', sans-serif;
+  }
+  
+  body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
     margin: 0;
-    padding: 0;
+    padding: 1rem; /* Добавляем отступ для маленьких экранов */
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-}
-
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    text-align: center;
-}
-
-.input-field {
-    margin-bottom: 20px;
-}
-
-.helper-text {
-    font-size: 12px;
-    color: #666;
-}
-
-.result {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 20px;
-    color: #337ab7;
-}
-
-.switch {
-    margin-bottom: 20px;
-}
-
-.switch span {
-    font-size: 14px;
-}
-
-.btn {
+    box-sizing: border-box;
+  }
+  
+  .container {
+    max-width: 500px;
     width: 100%;
-}
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--container-background);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 5px 25px var(--shadow-color);
+  }
+  
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    text-align: center;
+    color: var(--muted-text-color);
+    margin-bottom: 2rem;
+  }
+  
+  .switch {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .switch label {
+    color: var(--muted-text-color);
+  }
+  
+  .btn {
+    width: 100%;
+    background-color: var(--primary-color);
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .btn:hover {
+    background-color: #2560a0; /* Более темный оттенок основного цвета */
+  }
+  
+  .result {
+    font-size: 1.75rem;
+    font-weight: 500;
+    margin-top: 2rem;
+    padding: 1rem;
+    text-align: center;
+    color: var(--primary-color);
+    background-color: #eff5fc;
+    border-radius: 8px;
+    min-height: 60px; /* Чтобы контейнер не "прыгал" при появлении текста */
+  }
+  
+  /* Адаптация для мобильных устройств */
+  @media (max-width: 600px) {
+    .container {
+      padding: 1.5rem;
+    }
+  
+    h1 {
+      font-size: 1.8rem;
+    }
+  
+    .result {
+      font-size: 1.5rem;
+    }
+  }
