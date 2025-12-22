@@ -1,98 +1,192 @@
-/* :root содержит переменные, которые используются во всем файле. 
-   Это позволяет легко менять цветовую схему сайта. */
-   :root {
-    --primary-color: #2d74c4;
-    --background-color: #f4f7f9;
-    --container-background: #ffffff;
-    --text-color: #333333;
-    --muted-text-color: #666666;
-    --border-color: #e0e0e0;
-    --shadow-color: rgba(0, 0, 0, 0.08);
+/* :root contains variables used throughout the file. */
+:root {
+    --bg-deep-charcoal: #18181B; /* Body background */
+    --bg-soft-graphite: #27272A; /* Cards, Nav, Header */
+    --accent-muted-brick: #B46B6B; /* Primary buttons, Active states */
+    --accent-dusty-gold: #D4B483; /* Borders, Result numbers, Highlights */
+    --text-off-white: #E4E4E7; /* Main text */
+    --text-steel-grey: #71717A; /* Secondary text, helper text */
     --font-family: 'Roboto', sans-serif;
-  }
-  
-  body {
+}
+
+body {
     font-family: var(--font-family);
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background-color: var(--bg-deep-charcoal);
+    color: var(--text-off-white);
     margin: 0;
-    padding: 1rem; /* Добавляем отступ для маленьких экранов */
+    padding: 0; /* Removed padding to allow nav to stretch */
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Changed to column for nav */
     align-items: center;
     min-height: 100vh;
     box-sizing: border-box;
-  }
-  
-  .container {
-    max-width: 500px;
+}
+
+/* Navigation Styles */
+nav {
+    background-color: var(--bg-soft-graphite);
     width: 100%;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+nav .nav-wrapper {
+    max-width: 800px; /* Match container max-width roughly or keep it wider */
     margin: 0 auto;
+    padding: 0 1rem;
+}
+
+nav .brand-logo {
+    color: var(--text-off-white);
+    font-size: 1.5rem;
+}
+
+nav ul a {
+    color: var(--text-off-white);
+}
+
+nav ul a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Sidenav */
+.sidenav {
+    background-color: var(--bg-soft-graphite);
+}
+
+.sidenav li > a {
+    color: var(--text-off-white);
+}
+
+.sidenav li > a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Main Container */
+.container {
+    max-width: 500px;
+    width: 90%; /* Responsive width */
+    margin: 0 auto 2rem auto;
     padding: 2rem;
-    background-color: var(--container-background);
-    border: 1px solid var(--border-color);
+    background-color: var(--bg-soft-graphite);
+    border: 1px solid var(--accent-dusty-gold);
     border-radius: 12px;
-    box-shadow: 0 5px 25px var(--shadow-color);
-  }
-  
-  h1 {
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
     font-size: 2rem;
     text-align: center;
-    color: var(--primary-color);
+    color: var(--text-off-white);
     margin-bottom: 0.5rem;
-  }
-  
-  p {
+    margin-top: 0;
+}
+
+p {
     text-align: center;
-    color: var(--muted-text-color);
+    color: var(--text-steel-grey);
     margin-bottom: 2rem;
-  }
-  
-  .switch {
+}
+
+/* Materialize Overrides for Inputs */
+.input-field input[type=number] {
+    color: var(--text-off-white);
+    border-bottom: 1px solid var(--text-steel-grey);
+}
+
+.input-field input[type=number]:focus {
+    border-bottom: 1px solid var(--accent-muted-brick) !important;
+    box-shadow: 0 1px 0 0 var(--accent-muted-brick) !important;
+}
+
+.input-field input[type=number]:focus + label {
+    color: var(--accent-muted-brick) !important;
+}
+
+.input-field .helper-text {
+    color: var(--text-steel-grey);
+}
+
+.input-field label {
+    color: var(--text-steel-grey);
+}
+
+/* Switch Styles */
+.switch {
     margin-top: 2rem;
     margin-bottom: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .switch label {
-    color: var(--muted-text-color);
-  }
-  
-  .btn {
+}
+
+.switch label {
+    color: var(--text-steel-grey);
+}
+
+.switch label input[type=checkbox]:checked + .lever {
+    background-color: rgba(180, 107, 107, 0.5); /* Muted brick with opacity */
+}
+
+.switch label input[type=checkbox]:checked + .lever:after {
+    background-color: var(--accent-muted-brick);
+}
+
+/* Button Styles */
+.btn {
     width: 100%;
-    background-color: var(--primary-color);
+    background-color: var(--accent-muted-brick);
     transition: background-color 0.2s ease-in-out;
-  }
-  
-  .btn:hover {
-    background-color: #2560a0; /* Более темный оттенок основного цвета */
-  }
-  
-  .result {
+    color: var(--text-off-white);
+}
+
+.btn:hover, .btn:focus {
+    background-color: #a05a5a; /* Slightly darker muted brick */
+}
+
+/* Result Box */
+.result {
     font-size: 1.75rem;
     font-weight: 500;
     margin-top: 2rem;
     padding: 1rem;
     text-align: center;
-    color: var(--primary-color);
-    background-color: #eff5fc;
+    color: var(--accent-dusty-gold);
+    background-color: transparent;
+    border: 1px solid var(--accent-dusty-gold);
     border-radius: 8px;
-    min-height: 60px; /* Чтобы контейнер не "прыгал" при появлении текста */
-  }
-  
-  /* Адаптация для мобильных устройств */
-  @media (max-width: 600px) {
+    min-height: 60px;
+}
+
+/* History List */
+#history-list {
+    margin-top: 2rem;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--text-steel-grey);
+}
+
+#history-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(113, 113, 122, 0.3);
+    color: var(--text-steel-grey);
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Adaptation for mobile devices */
+@media (max-width: 600px) {
     .container {
-      padding: 1.5rem;
+        padding: 1.5rem;
+        width: 95%;
     }
-  
+
     h1 {
-      font-size: 1.8rem;
+        font-size: 1.8rem;
     }
-  
+
     .result {
-      font-size: 1.5rem;
+        font-size: 1.5rem;
     }
-  }
+}

@@ -5,8 +5,8 @@
   "description": "Рассчитайте итоговый балл или необходимый балл для сессии в КазНПУ имени Абая.",
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#18181B",
+  "background_color": "#27272A",
   "orientation": "any",
   "icons": [
     {

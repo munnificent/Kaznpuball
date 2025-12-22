@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Калькулятор баллов КазНПУ</title>
+    <meta name="theme-color" content="#18181B">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-wrapper">
+            <a href="index.html" class="brand-logo center">KazNPU Ball</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="https://elibrary.munificent.net/" target="_blank">Библиотека</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="https://elibrary.munificent.net/" target="_blank">Библиотека</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+    </ul>
+
+    <main class="container">
+        <h1>Контакты</h1>
+        <p>Полезные контакты для студентов:</p>
+
+        <ul class="collection" style="border: none; background: transparent;">
+            <li class="collection-item avatar"
+                style="background: transparent; border-bottom: 1px solid var(--text-steel-grey);">
+                <i class="material-icons circle" style="background-color: var(--accent-muted-brick);">school</i>
+                <span class="title" style="color: var(--text-off-white); font-weight: bold;">Офис регистратора</span>
+                <p style="color: var(--text-steel-grey); text-align: left; margin-bottom: 0;">
+                    Телефон: +7 (727) 123-45-67 <br>
+                    Email: registrar@kaznpu.kz
+                </p>
+            </li>
+            <li class="collection-item avatar"
+                style="background: transparent; border-bottom: 1px solid var(--text-steel-grey);">
+                <i class="material-icons circle" style="background-color: var(--accent-dusty-gold);">person</i>
+                <span class="title" style="color: var(--text-off-white); font-weight: bold;">Эдвайзеры</span>
+                <p style="color: var(--text-steel-grey); text-align: left; margin-bottom: 0;">
+                    Обращайтесь на кафедру вашей специальности.
+                </p>
+            </li>
+            <li class="collection-item avatar" style="background: transparent; border-bottom: none;">
+                <i class="material-icons circle"
+                    style="background-color: var(--bg-soft-graphite); border: 1px solid var(--text-steel-grey);">help</i>
+                <span class="title" style="color: var(--text-off-white); font-weight: bold;">Техническая
+                    поддержка</span>
+                <p style="color: var(--text-steel-grey); text-align: left; margin-bottom: 0;">
+                    Email: support@kaznpu.kz
+                </p>
+            </li>
+        </ul>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
+    <script>
+        // Инициализация Sidenav
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+        });
+    </script>
+</body>
+
+</html>

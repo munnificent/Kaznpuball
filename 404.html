@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница не найдена - Калькулятор баллов КазНПУ</title>
+    <meta name="theme-color" content="#18181B">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-wrapper">
+            <a href="index.html" class="brand-logo center">KazNPU Ball</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="https://elibrary.munificent.net/" target="_blank">Библиотека</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="https://elibrary.munificent.net/" target="_blank">Библиотека</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+    </ul>
+
+    <main class="container">
+        <h1>404</h1>
+        <p>Страница не найдена</p>
+        <p>К сожалению, запрашиваемая вами страница не существует.</p>
+        <a href="index.html" class="btn waves-effect waves-light">Вернуться на главную</a>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
+    <script>
+        // Инициализация Sidenav
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+        });
+    </script>
+</body>
+
+</html>

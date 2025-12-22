@@ -32,7 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
           sessionLabel: 'Желаемый итоговый балл:',
           sessionHelper: 'Введите желаемый балл',
         },
-      }
+      },
+      historyLimit: 3
     };
   
     // --- ЭЛЕМЕНТЫ DOM ---
@@ -43,7 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultElement = document.getElementById('result');
     const modeSwitch = document.getElementById('mode-switch');
     const sessionLabel = document.querySelector('label[for="session"]');
-    const sessionHelper = sessionInput.nextElementSibling; // Более надежный способ получить helper-text
+    const sessionHelper = sessionInput.nextElementSibling;
+    const historyList = document.getElementById('history-list');
   
     let currentMode = 1;
   
@@ -68,6 +70,42 @@ document.addEventListener('DOMContentLoaded', () => {
     function getGradeInfo(score) {
       return config.grades.find(grade => score >= grade.score);
     }
+
+    /**
+     * Валидация входных данных.
+     * @param {number} value - Значение для проверки.
+     * @returns {boolean} - True, если значение валидно (0-100).
+     */
+    function isValidScore(value) {
+        return value >= 0 && value <= 100;
+    }
+
+    /**
+     * Сохраняет результат в историю (localStorage).
+     * @param {string} resultText - Текст результата.
+     */
+    function saveHistory(resultText) {
+        let history = JSON.parse(localStorage.getItem('calcHistory')) || [];
+        history.unshift(resultText); // Добавляем в начало
+        if (history.length > config.historyLimit) {
+            history.pop(); // Удаляем старый
+        }
+        localStorage.setItem('calcHistory', JSON.stringify(history));
+        loadHistory();
+    }
+
+    /**
+     * Загружает и отображает историю из localStorage.
+     */
+    function loadHistory() {
+        const history = JSON.parse(localStorage.getItem('calcHistory')) || [];
+        historyList.innerHTML = '';
+        history.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            historyList.appendChild(li);
+        });
+    }
   
     /**
      * Обрабатывает клик по кнопке "Рассчитать".
@@ -83,6 +121,11 @@ document.addEventListener('DOMContentLoaded', () => {
         M.toast({ html: 'Пожалуйста, введите все значения' });
         return;
       }
+
+      if (!isValidScore(control1) || !isValidScore(control2) || !isValidScore(sessionValue)) {
+          M.toast({ html: 'Значения должны быть от 0 до 100' });
+          return;
+      }
   
       let resultScore, resultText;
       const controlsSum = (control1 + control2) * config.weights.controls;
@@ -91,23 +134,25 @@ document.addEventListener('DOMContentLoaded', () => {
         // Расчет итогового балла
         resultScore = controlsSum + sessionValue * config.weights.session;
         const gradeInfo = getGradeInfo(resultScore);
-        resultText = `Итоговый балл: ${resultScore.toFixed(2)} (${gradeInfo.name})${gradeInfo.description}`;
+        resultText = `Итоговый: ${resultScore.toFixed(2)} (${gradeInfo.name})`;
+        resultElement.textContent = `${resultText}${gradeInfo.description}`;
       } else {
         // Расчет необходимого балла для сессии
         resultScore = (sessionValue - controlsSum) / config.weights.session;
         const gradeInfo = getGradeInfo(sessionValue);
-        let requiredScoreText = `Необходимый балл сессии: ${resultScore.toFixed(2)}`;
+        let requiredScoreText = `Нужно на сессии: ${resultScore.toFixed(2)}`;
         
         if (resultScore > 100) {
           requiredScoreText += ` (Недостижимо)`;
         } else if (resultScore < 0) {
-          requiredScoreText = `Достаточно любого балла, вы уже набрали ${sessionValue.toFixed(2)} (${gradeInfo.name})`;
+          requiredScoreText = `Достаточно любого балла`;
         }
   
         resultText = requiredScoreText;
+        resultElement.textContent = resultText;
       }
-  
-      resultElement.textContent = resultText;
+
+      saveHistory(resultText);
     }
   
     // --- СЛУШАТЕЛИ СОБЫТИЙ ---
@@ -120,4 +165,5 @@ document.addEventListener('DOMContentLoaded', () => {
   
     // --- ИНИЦИАЛИЗАЦИЯ ---
     updateUIMode();
+    loadHistory();
   });
