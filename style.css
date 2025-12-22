@@ -29,6 +29,7 @@ body {
 }
 
 /* Navigation Styles */
+/* Navigation Styles */
 nav {
     background-color: var(--bg-soft-graphite);
     width: 100%;
@@ -38,30 +39,62 @@ nav {
 
 nav .nav-wrapper {
     max-width: 100%;
-    /* Allow full width for positioning */
     margin: 0 auto;
     padding: 0 1rem;
     display: flex;
-    justify-content: center;
-    /* Center the menu */
+    justify-content: space-between;
+    align-items: center;
     position: relative;
+    height: 100%;
+    /* Ensure full height for centering */
 }
 
 nav .brand-logo {
     color: var(--text-off-white);
     font-size: 1.5rem;
-    position: absolute;
-    left: 1rem;
+    position: static;
+    /* Remove absolute positioning */
     transform: none;
     white-space: nowrap;
+    padding: 0;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    margin: 0;
 }
 
 nav ul a {
     color: var(--text-off-white);
+    padding: 0 1.5rem;
+    font-weight: 500;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    height: 64px;
+    /* Match default nav height */
 }
 
 nav ul a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--accent-dusty-gold);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+nav ul a.active {
+    border-bottom: 3px solid var(--accent-muted-brick);
+}
+
+/* Mobile Trigger */
+.sidenav-trigger {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    cursor: pointer;
+}
+
+.sidenav-trigger i {
+    color: var(--text-off-white);
 }
 
 /* Mobile Sidenav */
@@ -71,10 +104,12 @@ nav ul a:hover {
 
 .sidenav li>a {
     color: var(--text-off-white);
+    font-weight: 500;
 }
 
 .sidenav li>a:hover {
     background-color: rgba(255, 255, 255, 0.1);
+    color: var(--accent-dusty-gold);
 }
 
 /* Main Container */
