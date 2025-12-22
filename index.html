@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Калькулятор баллов для КазНПУ</title>
 
-    <meta name="description" content="Удобный калькулятор для расчета итогового балла или необходимого балла для сессии в КазНПУ имени Абая.">
+    <meta name="description"
+        content="Удобный калькулятор для расчета итогового балла или необходимого балла для сессии в КазНПУ имени Абая.">
     <meta name="theme-color" content="#18181B">
-    
+
     <!-- Open Graph Tags -->
     <meta property="og:title" content="Калькулятор баллов КазНПУ">
     <meta property="og:description" content="Рассчитайте свой итоговый балл или необходимый балл для сессии.">
@@ -26,6 +28,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <nav>
@@ -47,28 +50,31 @@
     </ul>
 
     <main class="container">
-        <h1>Калькулятор баллов</h1>
-        <p>Введите свои текущие оценки, чтобы рассчитать итоговый балл или необходимый балл для сессии.</p>
-        
+        <div class="header-group">
+            <span class="subtitle">Student Service</span>
+            <h1>Score Calculator</h1>
+            <p class="description">Calculate your final grade or find out what you need for the session.</p>
+        </div>
+
         <form id="calc-form">
             <div class="input-field">
                 <input type="number" id="control1" min="0" max="100" required>
                 <label for="control1">Первая контрольная работа:</label>
                 <span class="helper-text">Балл от 0 до 100</span>
             </div>
-            
+
             <div class="input-field">
                 <input type="number" id="control2" min="0" max="100" required>
                 <label for="control2">Вторая контрольная работа:</label>
                 <span class="helper-text">Балл от 0 до 100</span>
             </div>
-            
+
             <div class="input-field">
                 <input type="number" id="session" min="0" max="100" required>
                 <label for="session">Сессия:</label>
                 <span class="helper-text">Введите балл за сессию</span>
             </div>
-            
+
             <div class="switch">
                 <label>
                     Рассчитать итоговый балл
@@ -77,9 +83,9 @@
                     Рассчитать балл для сессии
                 </label>
             </div>
-            
+
             <button class="btn waves-effect waves-light" id="calculate" type="submit">Рассчитать</button>
-            
+
             <div class="result" id="result" aria-live="polite"></div>
 
             <ul id="history-list"></ul>
@@ -89,21 +95,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
     <script src="script.js" defer></script>
     <script>
-      // Инициализация Sidenav
-      document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.sidenav');
-        var instances = M.Sidenav.init(elems);
-      });
-
-      // Регистрируем Service Worker для работы PWA
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('sw.js').then(
-            (registration) => console.log('ServiceWorker: Registration successful!', registration.scope),
-            (err) => console.log('ServiceWorker: Registration failed!', err)
-          );
+        // Инициализация Sidenav
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
         });
-      }
+
+        // Регистрируем Service Worker для работы PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').then(
+                    (registration) => console.log('ServiceWorker: Registration successful!', registration.scope),
+                    (err) => console.log('ServiceWorker: Registration failed!', err)
+                );
+            });
+        }
     </script>
 </body>
+
 </html>
