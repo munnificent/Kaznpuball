@@ -90,11 +90,18 @@ nav ul a.active {
 }
 
 /* Mobile Trigger */
+/* Mobile Trigger */
 .sidenav-trigger {
     display: flex;
     align-items: center;
     margin: 0;
     cursor: pointer;
+    position: absolute;
+    /* Force position */
+    right: 10px;
+    /* Align to right */
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .sidenav-trigger i {
@@ -369,5 +376,18 @@ h1 {
 @media (max-width: 400px) {
     .switch label {
         font-size: 0.8rem;
+        white-space: normal;
+        /* Allow wrapping */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .switch label .lever {
+        margin: 0 5px;
+        /* Reduce margin on small screens */
+        flex-shrink: 0;
+        /* Prevent lever from shrinking */
     }
 }
