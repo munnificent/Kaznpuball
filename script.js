@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       1: {
         buttonText: 'Рассчитать',
         sessionLabel: 'Сессия:',
-        sessionHelper: 'Балл от 0 до 100',
+        sessionHelper: 'Балл за сессию',
       },
       // Режим 2: Расчет необходимого балла
       2: {
