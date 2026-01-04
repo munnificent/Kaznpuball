@@ -96,12 +96,8 @@ nav ul a.active {
     align-items: center;
     margin: 0;
     cursor: pointer;
-    position: absolute;
-    /* Force position */
-    right: 10px;
-    /* Align to right */
-    top: 50%;
-    transform: translateY(-50%);
+    position: relative;
+    flex-shrink: 0;
 }
 
 .sidenav-trigger i {
