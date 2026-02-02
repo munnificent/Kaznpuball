@@ -11,6 +11,8 @@ User-agent: Slurp
 Disallow: 
 User-agent: Gigabot
 Disallow: 
+User-agent: Yandex # будет использована всеми роботами Яндекса
+Disallow: 
 User-agent: Robozilla
 Disallow: 
 User-agent: Nutch
@@ -33,3 +35,4 @@ User-agent: *
 Disallow: 
 Disallow: /cgi-bin/
 Sitemap: https://kaznpu.munificent.net/
+
